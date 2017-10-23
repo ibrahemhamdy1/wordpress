@@ -1,3 +1,11 @@
+
+/*Start Edite  Bootstrap */
+
+.navbar{
+	border-radius: 0px;
+}
+/*End Edite  Bootstrap */
+
 .footer{
 	background-color: #333;
 	color: #eee;
@@ -6,4 +14,70 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	margin-top: 10px;
 }
+body{
+	height: 10000px;
+	background-color: #eee;
+}
+.navbar-nav>li{
+	margin: 5px;
+}
+
+
+
+/*start   posts  style*/
+.main-post{
+	background-color: #fff;
+	padding: 15px;
+	border: 1px solid #d8d8d8;
+	margin-bottom: 10px;
+}
+.main-post h3{
+	margin: 0 0 10px 2px;
+	font-weight: bold;
+	color: #777;
+	letter-spacing: -1 px;
+}
+
+.main-post  .post-author,
+.main-post  .post-date,
+.main-post  .post-comments{
+	font-size: 12px;
+}
+.main-post span{
+	margin: 0 0 30px 4px;
+}
+
+.main-post img{
+	display: block;
+	margin: 20px 0 1px 0px;
+}
+.main-post .main-content{
+	line-height: 1.7;
+	color: #888;
+}
+.post-pagination a:first-of-type,
+
+{
+		margin-right: 10px 0 0 10px;
+}
+.post-pagination a , 
+.post-pagination span{
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #fff;
+	margin: 10px;
+}
+.post-pagination span{
+	opacity: .5;
+	cursor: not-allowed;
+}
+.post-pagination .previous-span{
+		margin-right: 10px;
+}
+.post-pagination .next-span{
+		margin-left: 10px;
+}
+.main-post  
+/*end   posts  style*/
