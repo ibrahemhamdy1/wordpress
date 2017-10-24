@@ -1,7 +1,6 @@
 		<div class="footer text-center">
 			
-				Copyright &Copy; <?php echo date("Y"); ?>
- IBRAHIM HAMDY
+				Copyright &copy; <?php echo date("Y"); ?>  <?php bloginfo('name') ?>
 		</div>
 		<?php wp_footer();?>
 

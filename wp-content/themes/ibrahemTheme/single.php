@@ -3,13 +3,13 @@
 
 
 <div class="container">
-    <div class="row">
     	<?php 
     		if (have_posts()) {
     			while (have_posts()) {
     				the_post()?>
-    				<div class="col-md-6">
-            	  		<div class="main-post">
+    				<div class="">
+            	  		<div class="main-post single-post">
+            	  			<?php edit_post_link('Edit <i  class="fa fa-pencil"></i>') ?>
             	  			<h3 class="post-title">
             	  				<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
             	  			</h3>
@@ -23,11 +23,19 @@
               					<i class="fa fa-comments fa-fw"></i>
               					<?php comments_popup_link('0 comments','One comment','% Comment','comment-url','Comments Disabled') ?>
               				</span>
-              				<?php  the_post_thumbnail('',['class'=>'img-responsive img-thumbnail','title'=>'Post Image']); ?>
+              				
 
-              				<p class="post-content"><?php the_excerpt() ?></p>
-
+              				<div class="row">
+              					<div class="col-md-6">
+              						<?php  the_post_thumbnail('',['class'=>'img-responsive img-thumbnail','title'=>'Post Image']); ?>
+              					</div>
+              					<div class="col-md-6">
+              						<p class="post-content"><?php the_content() ?></p>
+              						
+              					</div>
+              				</div>
               				<hr>
+
 							<p class="psot-categories">
 								<i class="fa fa-tags fa-fw"></i>
 									<?php the_category(', ') ?>
@@ -47,33 +55,40 @@
 
 	            	  	</div>
 	            	</div>
-				<div class="clear-fix">	</div>
     	<?php
     			}
     		}
 
     		echo "<div class='post-pagination text-center'>";
-	    		if (get_previous_posts_link())
+	    		if (get_previous_post_link())
 	    		{
-	    			 previous_posts_link('<i class="fa fa-chevron-left  fa-lg" aria-hidden="true"></i>Prev');
+	    			 previous_post_link('%link','<i class="fa fa-chevron-left  fa-lg" aria-hidden="true"></i> Previous Articls:%title');
 
 	    		}else
 	    		{
 	    			echo "<span class='previous-span'> No Previous Page </span>";
 	    		}
-	    		if (get_next_posts_link())
+	    		if (get_next_post_link())
 	    		{
-						next_posts_link('<i class="fa fa-chevron-right  fa-lg" aria-hidden="true"></i>Next');
+						next_post_link('%link','Next Articls:%title <i class="fa fa-chevron-right  fa-lg" aria-hidden="true"></i> ');
 
 	    		}else
 	    		{
 	    			echo " <span class='next-span'> No Next Page </span>";
 	    		}
     		echo "</div>";
+    		echo '<hr class="comment-separator">';
+    		comments_template();
+
     	 ?>
-	</div>
 </div>    	
 
+<!-- ################################################################################# -->
+
+
+
+
+<!-- ################################################################################# -->
 
 
 <?php include('footer.php');?>

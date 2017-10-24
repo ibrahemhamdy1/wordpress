@@ -79,5 +79,62 @@ body{
 .post-pagination .next-span{
 		margin-left: 10px;
 }
-.main-post  
+.main-post  .single-post{
+
+}
 /*end   posts  style*/
+/*start  single posts  style*/
+.single-post{
+	position: relative;
+
+}
+.single-post .post-edit-link{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 10px;
+	background-color: #eee;
+	border-radius: 0 0 0 10px;
+
+
+}
+.single-post .post-edit-link i{
+	color: #337ab7;
+	margin-left: 5px;
+	
+
+}
+/*end  single posts  style */
+
+
+/*Start  Comments  List*/
+	.comments-list ul,
+	.comments-list ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.comments-list > .comment {
+		
+		background-color: #fff;
+		padding: 10px;
+		border-radius:  1 px solid #ddd;
+		margin-bottom: 15px;
+	
+	}
+	.comments-list > .comment > .children > .comment{
+		padding: 10px;
+		background-color: #eee;
+		margin-top: 10px;
+		border-radius:  1 px solid #ccc;
+		margin-left: 10px;
+	}
+	.comments-list > .comment > .children > .comment .comment{
+		padding: 10px;
+		background-color: #ddd;
+		margin-top: 10px;
+		border-radius:  1 px solid #aaa;
+		margin-left: 20px;
+
+	}
+/*end  Comments  List*/
