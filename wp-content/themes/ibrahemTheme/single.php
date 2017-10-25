@@ -88,6 +88,8 @@
                User Profile Link :<span><?php the_author_posts_link() ?></span>
             </p>
         </div>
+    
+        <!-- end of  the rad post -->
         <!-- end the Author Section  -->
         <?php
     		echo "<div class='post-pagination text-center'>";
@@ -109,8 +111,39 @@
 	    		}
     		echo "</div>";
     		echo '<hr class="comment-separator">';
+?>
+            <!-- start of the  rand post   --> 
+           <?php
+            $random_posts_arguments =array(
+              'posts_per_page'   => 2,
+              'orderby'          =>'rand',
+              'category__in'     =>wp_get_post_categories(get_queried_object_id()),
+              'post__not_in'      =>array(get_queried_object_id())
+
+            );
+            $random_posts = new WP_Query($random_posts_arguments);
+
+          while ($random_posts->have_posts()) {
+            $random_posts->the_post()?>
+            <div class="author-page main-post ">
+              <div class="info">
+                <h3 class="post-title">
+                    <a href="<?php the_permalink() ?>">
+                      <?php the_title() ?>
+                                
+                    </a>
+                </h3>
+                      <hr>
+                </div>
+            </div>  
+          <div class="clear-fix"> </div>
+
+        <?php
+          }
+
     		comments_template();
     	 ?>
+
 </div>    	
 
 <!-- ################################################################################# -->

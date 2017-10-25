@@ -46,7 +46,12 @@
 
 		function excerpt_length()
 		{
-			return 20;
+			if (is_author()) {
+				return 40;
+			}else{
+				return 80;
+
+			}
 		}
 		add_filter('excerpt_length','excerpt_length');
 

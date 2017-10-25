@@ -32,79 +32,131 @@
 		</div>	
 			<!-- end the  row -->
 		<!-- start the  row -->
-		<div class="col-md-3">
-			<div class="status">
-				Posts
-				<span><?php echo  count_user_posts(get_the_author_meta('ID')) ?></span>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="status">
+					Posts
+					<span><?php echo  count_user_posts(get_the_author_meta('ID')) ?></span>
 
+				</div>
 			</div>
-		</div>
-		<div class="col-md-3 ">
-			<div class="status">
-				Comments 
-				<span><?php $commentcount_arguments=array(
-							'user_id' => get_the_author_meta('ID'),
-							'count'   => true
-							);
+			<div class="col-md-3 ">
+				<div class="status">
+					Comments 
+					<span><?php $commentcount_arguments=array(
+								'user_id' => get_the_author_meta('ID'),
+								'count'   => true
+								);
 
-							echo get_comments($commentcount_arguments);
-						?>			
-				</span>
-			</div>
-		</div>	
-		<div class="col-md-3">
-			<div class="status">
-				Tostal Post View
-				<span>0</span>
+								echo get_comments($commentcount_arguments);
+							?>			
+					</span>
+				</div>
+			</div>	
+			<div class="col-md-3">
+				<div class="status">
+					Tostal Post View
+					<span>0</span>
 
-			</div>
-		</div>		
+				</div>
+			</div>		
 
-		<div class="col-md-3">
-			<div class="status">
-				Test
-				<span>0</span>
+			<div class="col-md-3">
+				<div class="status">
+					Test
+					<span>0</span>
 
+				</div>
 			</div>
 		</div>
 		<!-- end the  row -->
 		<!-- start the  Posts section  -->
 <?php
 		if (have_posts()) {
-			    ?> <h1 style="margin-left: 15px"><?php the_author_meta('nickname') ; ?></h1>
+			    ?> <h3 class="author-posts-title text-center"><?php the_author_meta('nickname') ; ?> Posts</h3>
 			    <?php
-    			while (have_posts()) {
-    				the_post()?>
-    				<div class="author-page row"> 
-	    				<div class="col-md-2">
-	    					<?php  the_post_thumbnail('',['class'=>'img-responsive img-circle','title'=>'Post Image',]); ?>
+			    	$author_posts_per_page=3;
+			    	$author_posts_arguments =array(
+			    		'author' =>get_the_author_meta('ID'),
+			    		'posts_per_page' =>$author_posts_per_page
+			    	);
+			    	$author_posts = new WP_Query($author_posts_arguments);
 
-	    				</div>
-	    				<div class="col-md-10">
-	            	  		<div class="main-post">
-	            	  			<h3 class="post-title">
-	            	  				<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
-	            	  			</h3>
-	              				<span class="post-date">
-	              					<i class="fa fa-calendar  fa-fw"></i></i><?php the_time('F J ,Y') ?>
-	              				</span>
-	              				<span class="post-comments">
-	              					<i class="fa fa-comments fa-fw"></i>
-	              					<?php comments_popup_link('0 comments','One comment','% Comment','comment-url','Comments Disabled') ?>
-	              				</span>
+    			while ($author_posts->have_posts()) {
+    				$author_posts->the_post()?>
+    				<div class="author-page main-post ">
+	    				<div class="row"> 
+		    				<div class="col-md-2">
+		    					<?php  the_post_thumbnail('',['class'=>'img-responsive img-circle','title'=>'Post Image',]); ?>
 
-	              				<p class="post-content"><?php the_excerpt() ?></p>
+		    				</div>
+		    				<div class="col-md-10">
+		            	  		<div class="info">
+		            	  			<h3 class="post-title">
+		            	  				<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+		            	  			</h3>
+		              				<span class="post-date">
+		              					<i class="fa fa-calendar  fa-fw"></i></i><?php the_time('F J ,Y') ?>
+		              				</span>
+		              				<span class="post-comments">
+		              					<i class="fa fa-comments fa-fw"></i>
+		              					<?php comments_popup_link('0 comments','One comment','% Comment','comment-url','Comments Disabled') ?>
+		              				</span>
 
-	              				<hr>
-								
-		            	  	</div>
-		            	</div>
-		            </div>
+		              				<p class="post-content"><?php the_excerpt() ?></p>
 
+		              				<hr>
+									
+			            	  	</div>
+			            	</div>
+			            </div>
+					</div>	
 					<div class="clear-fix">	</div>
+
 	    	<?php
     			}
     		}
+    		wp_reset_postdata();// Rest Loop jquery 
+    		$comment_per_page =6;
+    		$comment_arguments=array(
+    			'user_id' 		=>get_the_author_meta('ID'),
+    			'status'		=>'approve',
+    			'number'		=>'publich',
+    			'post_type'		=>'post',
+
+
+    		);
+
+    		$comments=get_comments($comments_arguments);
+	    			# code...
+	    		
+	    		$ID =$comment->comment_post_ID;?>
+	    			    		<hr>
+ 
+	    		<div class="clear-fix"></div>
+	    		<h3 class="author-posts-title text-center"><?php the_author_meta('nickname') ; ?> Comments</h3>
+
+	    		<div class="row">
+
+				<?php
+	    		foreach ($comments as $comment) {?>
+					<div class="col-md-12">
+						<div class="comment">
+			    			<a href="<?php echo get_permalink($comment->comment_post_ID) ?>">
+			    				<?php echo get_the_title($ID) ?>
+			    			</a>
+			    			<br>
+			    			<span>	<?php echo 'Added on ' .mysql2date(' l , F , j , Y',$comment->comment_date );?></span>
+
+			    			<br>
+			    			<hr>
+
+			    			<h3><?php echo $comment->comment_content ?>	</h3>
+			    		</div>	
+			    	</div>		
+	    		
+	    		<?php
+	    	   } 
     		?>
 		<!--end the posts  section  -->
 	</div>	
