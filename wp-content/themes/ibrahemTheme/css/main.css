@@ -26,6 +26,34 @@ body{
 
 
 
+/*Start singlePage  Bootstrap */
+.photo img{
+	margin-top :20px;
+}
+
+.photo{
+	background-color: #fff;
+	max-width: 1140px;
+	margin-left: 1px;
+}
+.author-info h4{
+	margin: 12px 0 10px 0;
+	font-weight: bold;
+	color: #676767;
+	font-size: 26px;
+}
+.author-info h4 .nickname{
+	color: #1068a0;
+}
+
+
+.author-info p{
+	font-size: 17px;
+	line-height: 1.2;
+	color: #777;
+}
+/*End singlePage  Bootstrap */
+
 /*start   posts  style*/
 .main-post{
 	background-color: #fff;
@@ -114,6 +142,34 @@ body{
 		margin: 0;
 		padding: 0;
 	}
+
+
+
+	.comments-count{
+		padding: 20px;
+		background-color: #e2e2e2;
+		font-size: 24px;
+		margin-top: 0;
+		font-weight: bold;
+		color: #909090;
+		border: 1px solid #dedede;
+
+	}
+	.comments-list  .comment img{
+		padding: 3px;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		margin-bottom: 5px;
+		margin-right:5px;
+	}
+	.comments-list  .comment meta{
+		font-size: 12px;
+		color: #777;
+	}
+	.comments-list  .comment p{
+		 margin-top: 8px;
+		 color: #777;
+	}
 	.comments-list > .comment {
 		
 		background-color: #fff;
@@ -138,3 +194,40 @@ body{
 
 	}
 /*end  Comments  List*/
+
+/*strat  Author  page*/
+	.author-page .profile-header{
+		font-size: 60px;
+		margin: 30px 0;
+		color: #666;
+		font-weight: bold;
+		letter-spacing: -3px;
+	}
+	.author-page .author-main-info {
+		background-color: #fff;
+		padding: 20px;
+		font-size: 18px;
+		border:1px solid #dedede;
+		margin-bottom: 20px;
+	}
+	.author-main-info p{
+		color: #777;
+		line-height: 1.6;
+		letter-spacing: 1px;
+	}
+
+	.author-page  .status {
+		background-color: #fff;
+		padding: 20px;
+		font-size: 14px;
+		border: 1px solid #dedede;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	.author-page .status span {
+		display: block;
+		padding: 20px;
+		font-size: 50px;
+		margin-top: 10px;
+	}
+/*end   Author  page*/

@@ -54,11 +54,42 @@
 							</p>
 
 	            	  	</div>
-	            	</div>
+              	</div>
     	<?php
     			}
-    		}
+    		}echo "<div class='clear-fix'></div>";?>
+        <!-- Start the Author Section  -->
+        <div class="row photo main-post ">
+          <div class="col-md-2 ">
+            <?php 
+                $avater_arguments=array(
+                  'class' => 'img-responsive img-circle center-block'
+                );
+                 echo  get_avatar(get_the_author_meta('ID'),128,'','User Avatar',$avater_arguments);
 
+               ?>
+            </div>
+            <div class="col-md-10 author-info">
+
+                <h4>
+                   <?php the_author_meta('first_name') ?>
+                   <?php the_author_meta('last_name') ?>
+                   <?php the_author_meta('nickname') ?>
+                </h4>
+              <?php if (get_the_author_meta('description')) { ?>
+              <p><?php the_author_meta('description') ?></p>
+              <?php }else{
+                    echo  'there is  now description';
+                  }?>
+            </div>
+            <hr>
+            <p>
+          User Posts Count : <span  class="posts-count"><?php count_user_posts(get_the_author_meta('ID')) ?></span>
+               User Profile Link :<span><?php the_author_posts_link() ?></span>
+            </p>
+        </div>
+        <!-- end the Author Section  -->
+        <?php
     		echo "<div class='post-pagination text-center'>";
 	    		if (get_previous_post_link())
 	    		{
@@ -79,7 +110,6 @@
     		echo "</div>";
     		echo '<hr class="comment-separator">';
     		comments_template();
-
     	 ?>
 </div>    	
 
