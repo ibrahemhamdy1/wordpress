@@ -52,7 +52,7 @@
     			}
     		}
 
-    		echo "<div class='post-pagination text-center'>";
+    		/*echo "<div class='post-pagination text-center'>";
 	    		if (get_previous_posts_link())
 	    		{
 	    			 previous_posts_link('<i class="fa fa-chevron-left  fa-lg" aria-hidden="true"></i>Prev');
@@ -69,7 +69,11 @@
 	    		{
 	    			echo " <span class='next-span'> No Next Page </span>";
 	    		}
-    		echo "</div>";
+    		echo "</div>";*/
+    		echo "<div class='post-pagination text-center'>";
+
+    			echo numbering_pagination();
+    		echo "</div>";	
     	 ?>
 	</div>
 </div>    	
